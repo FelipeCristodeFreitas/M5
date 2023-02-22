@@ -1,8 +1,7 @@
-export class Users{
-    name:       String[100]
-    email:      String[100]
-    password:   String[100]
-    cpf:        String[15]
-    isAdmin:    boolean
+export class Users {
+  name: string[100];
+  email: string[100];
+  password: string[100];
+  cpf: string[15];
+  isAdmin: boolean;
 }
-
