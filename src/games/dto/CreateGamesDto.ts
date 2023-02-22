@@ -18,11 +18,6 @@ export class CreateGamesDto {
   })
   description: string[100];
   @ApiProperty({
-    description: 'Generos',
-    example: 'Game de Ação',
-  })
-  genders: string[100];
-  @ApiProperty({
     description: 'Ano de Lançamento do Game',
     example: '2008',
   })

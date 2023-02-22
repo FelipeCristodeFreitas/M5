@@ -1,3 +1,4 @@
+import { GameFavorites, GamesGenres } from '@prisma/client';
 
 export class Games {
   title: string[100];

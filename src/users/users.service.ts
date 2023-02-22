@@ -1,8 +1,4 @@
-import {
-  BadRequestException, ConflictException,
-  Injectable,
-  UnauthorizedException
-} from "@nestjs/common";
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUsersDto } from './dto/CreateUsersDto';
 import { Users } from './entities/Users.entity';
@@ -51,26 +47,10 @@ export class UsersService {
     return user;
   }
 
-  async create(CreateUsersDto: CreateUsersDto) {
+  create(CreateUsersDto: CreateUsersDto) {
     const Users: Users = { ...CreateUsersDto };
-    try {
-      return await this.prisma.users.create({
-        data: Users,
-      });
-    } catch (e) {
-      if (e.code === 'P2002') {
-        throw new ConflictException({
-          error: 'Este email ja existe cadastrado',
-          code: 409,
-          type: 'Conflict',
-        });
-      } else {
-        console.log('---------------------------------------------');
-        console.log(e.code);
-        console.log(e);
-        console.log('---------------------------------------------');
-        throw e;
-      }
-    }
+    return this.prisma.users.create({
+      data: Users,
+    });
   }
 }

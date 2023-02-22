@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Put,
-  Delete,
-  Param,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Delete, Param } from "@nestjs/common";
 import { CreateGamesDto } from './dto/CreateGamesDto';
 import { GamesService } from './games.service';
 import { ApiParam, ApiTags } from '@nestjs/swagger';

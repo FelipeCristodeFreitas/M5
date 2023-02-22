@@ -1,16 +1,8 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
-import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 import { CreateGenresDto } from './dto/CreateGenresDto';
 import { GenresService } from './genres.service';
-import { CreateGamesDto } from '../games/dto/CreateGamesDto';
+import { CreateGamesDto } from "../games/dto/CreateGamesDto";
 
 @ApiTags('Genres')
 @Controller('genres')
