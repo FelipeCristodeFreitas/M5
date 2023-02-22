@@ -1,10 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUsersDto } from './dto/CreateUsersDto';
 import { Users } from './entities/Users.entity';
 import { FindUserDto } from './dto/FindUserDto';
 import { LoginUserDto } from './dto/LoginUserDto';
-import { UsersBasic } from './entities/UsersBasic.entity';
 
 @Injectable()
 export class UsersService {
@@ -13,28 +12,11 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   findAll() {
-    return this.prisma.users.findMany({
-      select: {
-        email: true,
-        name: true,
-        cpf: true,
-        id: true,
-      },
-    });
+    return this.prisma.users.findMany();
   }
 
-  findOneByMail(findUserDto: FindUserDto): Promise<UsersBasic> {
-    return this.prisma.users.findFirst({
-      where: { email: findUserDto.email },
-      select: { email: true, name: true, cpf: true, id: true },
-    });
-  }
-
-  findOneById(id: number): Promise<UsersBasic> {
-    return this.prisma.users.findFirst({
-      where: { id },
-      select: { email: true, name: true, cpf: true, id: true },
-    });
+  findOne(findUserDto: FindUserDto): Promise<Users> {
+    return this.prisma.users.findFirst({ where: { email: findUserDto.email } });
   }
 
   async login(loginUserDto: LoginUserDto): Promise<Users> {

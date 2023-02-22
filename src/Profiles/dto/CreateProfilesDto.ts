@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Users } from "../../users/entities/Users.entity";
 
 export class CreateProfilesDto {
   @ApiProperty({
@@ -12,8 +13,8 @@ export class CreateProfilesDto {
   })
   imageURL: string[255];
   @ApiProperty({
-    description: 'Id do usuario',
-    example: 1,
+    description: 'Email do usuario',
+    example: 'felipe@gmail.com',
   })
-  UserId: number;
+  user: Users;
 }

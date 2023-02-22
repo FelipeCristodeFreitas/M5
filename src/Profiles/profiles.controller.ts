@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateProfilesDto } from './dto/CreateProfilesDto';
 import { Profiles } from './entities/Profiles.entity';
 import { ProfilesService } from './profiles.service';
@@ -21,13 +21,7 @@ export class ProfilesController {
   @ApiOperation({
     summary: 'Listar os perfis por ID',
   })
-  @ApiParam({
-    name: 'id',
-    required: true,
-    type: 'number',
-  })
-  findOne(@Param('id') id): Promise<Profiles> {
-    id = parseInt(id);
+  findOne(@Param('id') id: number): Promise<Profiles> {
     return this.profilesService.findOne(id);
   }
 
