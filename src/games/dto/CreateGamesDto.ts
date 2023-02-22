@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { GameFavorites } from '@prisma/client';
+import { IsOptional } from 'class-validator';
 
 export class CreateGamesDto {
   @ApiProperty({
@@ -18,10 +18,11 @@ export class CreateGamesDto {
   })
   description: string[100];
   @ApiProperty({
-    description: 'Generos',
-    example: 'Game de Ação',
+    description: 'categoria',
+    example: '1|2|3',
   })
-  genders: string[100];
+  @IsOptional()
+  categoria: string[100];
   @ApiProperty({
     description: 'Ano de Lançamento do Game',
     example: '2008',
