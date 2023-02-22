@@ -1,9 +1,12 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from "@nestjs/swagger";
 
-export class CreateGenresDto {
-  @ApiProperty({
-    description: 'Genero',
-    example: 'Ação',
-  })
-  name: string[100];
+
+export class CreateGenresDto{
+    @ApiProperty({
+        description: "Genero",
+        example: "Ação"
+    })
+    name:       String[100];
+ 
+
 }
