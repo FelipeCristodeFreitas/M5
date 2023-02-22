@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Injectable } from "@nestjs/common";
+=======
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+>>>>>>> 181cd2ed6fd9ad30c636d94908ba49aa2e39514d
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUsersDto } from "./dto/CreateUsersDto";
 import { Users } from "./entities/Users.entity";
@@ -24,8 +28,16 @@ export class UsersService {
       data: Users,
     });
 
+<<<<<<< HEAD
     //this.Users.push(Users);
 
     //return JSON.stringify(CreateUsersDto);
+=======
+  create(CreateUsersDto: CreateUsersDto) {
+    const Users: Users = { ...CreateUsersDto };
+    return this.prisma.users.create({
+      data: Users,
+    });
+>>>>>>> 181cd2ed6fd9ad30c636d94908ba49aa2e39514d
   }
 }
