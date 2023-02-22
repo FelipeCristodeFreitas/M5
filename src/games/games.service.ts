@@ -17,16 +17,21 @@ export class GamesService {
     return this.prisma.games.findUnique({ where: { id } });
   }
 
+  remove(id: number): Promise<Games> {
+    return this.prisma.games.delete({ where: { id } });
+  }
+
   create(CreateGamesDto: CreateGamesDto) {
     const Games: Games = { ...CreateGamesDto };
-
     return this.prisma.games.create({
       data: Games,
     });
-
-    //this.Users.push(Users);
-
-    //return JSON.stringify(CreateUsersDto);
+  }
+  update(CreateGamesDto: CreateGamesDto, id) {
+    const Games: Games = { ...CreateGamesDto };
+    return this.prisma.games.update({
+      where: { id },
+      data: Games,
+    });
   }
 }
-/////////////////////

@@ -1,8 +1,3 @@
-export class Genres{
-   
-    name:       String[100]
- 
-   
+export class Genres {
+  name: string[100];
 }
-
-

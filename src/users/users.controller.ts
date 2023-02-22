@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { CreateUsersDto } from './dto/CreateUsersDto';
 import { UsersService } from './users.service';
 import { FindUserDto } from './dto/FindUserDto';
@@ -22,8 +22,22 @@ export class UsersController {
   @ApiOperation({
     summary: 'Buscar por email',
   })
-  findOne(@Body() findUserDto: FindUserDto) {
-    return this.usersService.findOne(findUserDto);
+  findOneByMail(@Body() findUserDto: FindUserDto) {
+    return this.usersService.findOneByMail(findUserDto);
+  }
+
+  @Get('/:id')
+  @ApiOperation({
+    summary: 'Buscar por id',
+  })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: 'number',
+  })
+  findOneById(@Param('id') id) {
+    id = parseInt(id);
+    return this.usersService.findOneById(id);
   }
 
   @Post('/login')
